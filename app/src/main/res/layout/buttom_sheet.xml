@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_bg"
+    android:orientation="vertical"
+    android:elevation="8dp"
+    android:id="@+id/buttom_she">
+
+    <View
+        android:layout_width="30dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center"
+        android:background="@drawable/card_bg"
+        android:backgroundTint="#CACACA"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/text_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lecture 01"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:layout_margin="8dp">
+
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_margin="8dp"
+        android:text="To Start The Meeting"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/baloo_thambi"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <cn.iwgang.countdownview.CountdownView
+            android:layout_margin="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:id="@+id/mycountdown1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:elevation="8dp"
+            app:isHideTimeBackground="false"
+            app:isShowDay="true"
+            app:isShowHour="true"
+            app:isShowMillisecond="false"
+            app:isShowMinute="true"
+            app:isShowSecond="true"
+            app:isTimeTextBold="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_below="@id/radio"
+            app:suffixDay="d"
+            app:suffixGravity="bottom"
+            app:suffixHour="h"
+            app:suffixMillisecond="ms"
+            app:suffixMinute="m"
+            app:suffixSecond="s"
+            app:suffixTextColor="#000000"
+            app:suffixTextSize="14sp"
+            app:isSuffixTextBold="true"
+            app:timeBgColor="@color/main_c"
+            app:timeBgBorderRadius="10dp"
+            app:timeBgRadius="8dp"
+            app:timeTextColor="#FFFFFF"
+            app:timeTextSize="35sp" />
+
+
+
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:fontFamily="@font/baloo_thambi"
+            android:textColor="@color/white"
+            android:background="@drawable/card_bg"
+            android:backgroundTint="@color/main_c"
+            android:elevation="8dp"
+            android:text="START"
+
+            android:textSize="18sp"
+            android:textStyle="bold">
+
+        </Button>
+
+    </LinearLayout>
+
+
+</LinearLayout>

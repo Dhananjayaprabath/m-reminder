@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    tools:context=".UpdateNotesActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:fadeScrollbars="true"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="Update Meeting"
+                android:textColor="@color/black"
+                android:textSize="18sp">
+
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/done1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_round_done_24"
+                android:elevation="5dp"
+                android:fadeScrollbars="false"
+                android:outlineProvider="background"
+                android:soundEffectsEnabled="false"
+                android:tint="#FFFFFF" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tool"
+        android:layout_margin="10dp"
+        android:drawableStart="@drawable/ic_baseline_title_24"
+        android:drawablePadding="12dp"
+        android:fontFamily="@font/baloo_thambi"
+        android:hint="Title"
+        android:paddingStart="10dp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_margin="10dp"
+        android:drawableStart="@drawable/ic_baseline_link_24"
+        android:drawablePadding="12dp"
+        android:fontFamily="@font/baloo_thambi"
+        android:hint="Meeting Link"
+        android:paddingStart="10dp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_margin="10dp"
+        android:drawableStart="@drawable/ic_baseline_access_time_24"
+        android:drawablePadding="12dp"
+        android:focusable="false"
+        android:fontFamily="@font/baloo_thambi"
+        android:hint="Time"
+        android:paddingStart="10dp"
+        android:textColor="@color/black" />
+
+
+    <EditText
+        android:id="@+id/date2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time"
+        android:layout_margin="10dp"
+        android:drawableStart="@drawable/ic_baseline_date_range_24"
+        android:drawablePadding="12dp"
+        android:focusable="false"
+        android:fontFamily="@font/baloo_thambi"
+        android:hint="Date"
+        android:paddingStart="10dp"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/updateNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:fontFamily="@font/baloo_thambi"
+        android:background="@drawable/custom_btn_bg"
+        android:text="Update Meeting"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/days"
+        android:layout_width="176dp"
+        android:layout_height="13dp"
+        android:layout_below="@id/date2"
+
+        android:ems="10"
+        android:inputType="date"
+        android:visibility="visible" />
+
+    <EditText
+        android:id="@+id/colour1"
+        android:layout_width="188dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/days"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-27dp"
+        android:layout_marginEnd="23dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="#3DDC84"
+        android:textColor="#ffffff"
+        android:visibility="invisible" />
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/colour1"
+        android:layout_margin="10dp"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/green_cheked"
+            android:button="@color/white"
+            android:checked="true"
+            android:elevation="6dp"
+            android:fadingEdge="horizontal|vertical"
+            android:padding="10dp" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/blue_cheked"
+            android:button="@color/white"
+            android:elevation="6dp"
+            android:padding="10dp"
+
+
+            />
+
+        <RadioButton
+            android:id="@+id/radio3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/red_checked"
+            android:button="@color/white"
+            android:elevation="6dp"
+            android:padding="10dp"
+
+            />
+
+
+    </RadioGroup>
+
+
+</RelativeLayout>

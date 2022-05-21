@@ -1,0 +1,28 @@
+Index: app/src/main/res/layout/activity_splash.xml
+===================================================================
+--- app/src/main/res/layout/activity_splash.xml	(revision 9fa599531f1438a7e735fd2478dde20ffd188205)
++++ app/src/main/res/layout/activity_splash.xml	(revision 029d477922acc8cd4b3161955a61e5980f8085d3)
+@@ -9,10 +9,9 @@
+ 
+ 
+     <ImageView
+-        android:layout_width="85dp"
+-        android:layout_height="85dp"
+-        android:layout_centerHorizontal="true"
+-        android:layout_centerVertical="true"
++        android:layout_width="100dp"
++        android:layout_height="100dp"
++        android:layout_centerInParent="true"
+         android:background="@drawable/artboard" />
+ 
+     <ImageView
+Index: app/src/main/res/values-ii-rCN/strings.xml
+===================================================================
+--- app/src/main/res/values-ii-rCN/strings.xml	(revision 029d477922acc8cd4b3161955a61e5980f8085d3)
++++ app/src/main/res/values-ii-rCN/strings.xml	(revision 029d477922acc8cd4b3161955a61e5980f8085d3)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <string name="app_name">M Reminder</string>
++</resources>
+\ No newline at end of file

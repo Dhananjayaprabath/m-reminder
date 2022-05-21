@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:id="@+id/note_layout"
+    android:elevation="10dp"
+    android:background="@drawable/card_bg"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="5dp">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toStartOf="@+id/share_Btt"
+                android:layout_toEndOf="@id/days1"
+                android:fontFamily="@font/baloo_thambi"
+                android:maxLines="1"
+                android:text="This is the Title gg"
+                android:textColor="@color/black"
+                android:textSize="21sp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </View>
+
+            <TextView
+                android:id="@+id/timev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toRightOf="@id/days1"
+                android:drawableStart="@drawable/ic_baseline_access_time_24"
+                android:drawablePadding="6dp"
+                android:drawableTint="#687A9F"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="9.35 PM"
+                android:textColor="#687A9F"
+                android:textSize="18sp"
+               />
+
+            <TextView
+                android:id="@+id/days1"
+                android:layout_marginEnd="3dp"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:background="#C93DDC84"
+                android:focusable="false"
+                android:fontFamily="@font/baloo_thambi"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="FRI 25"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/edit_Btt"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:srcCompat="@drawable/ic_baseline_edit_24"
+                android:contentDescription="TODO" />
+
+            <ImageButton
+                android:id="@+id/share_Btt"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+               android:layout_toLeftOf="@id/edit_Btt"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/ic_baseline_share_24" />
+
+            <TextView
+                android:id="@+id/datev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp"
+                android:layout_toRightOf="@id/timev"
+                android:drawableStart="@drawable/ic_baseline_date_range_24"
+                android:drawablePadding="6dp"
+                android:drawableTint="#687A9F"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="23 may 2021"
+                android:textColor="#687A9F"
+                android:textSize="18sp"
+                />
+
+        </RelativeLayout>
+
+
+
+
+
+</androidx.cardview.widget.CardView>

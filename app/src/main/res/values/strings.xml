@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">M Reminder</string>
+    <string name="appwidget_text">My Meetings</string>
+    <string name="add_widget">Add widget</string>
+</resources>
