@@ -20,8 +20,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.provider.CalendarContract;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.webkit.URLUtil;
@@ -56,9 +58,7 @@ public class AddNotesActivity extends AppCompatActivity {
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
 
-
-    public static final String CHANNEL_ID = "10001";
-
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -225,8 +225,6 @@ public class AddNotesActivity extends AppCompatActivity {
                         DatabaseClass db = new DatabaseClass(AddNotesActivity.this);
                         db.addNotes(title.getText().toString(), description.getText().toString(), time.getText().toString(), date.getText().toString(), days.getText().toString(), colours.getText().toString());
 
-                        String notitext =title.getText().toString();
-
 
 
                         Intent intent = new Intent(AddNotesActivity.this, MainActivity.class);
@@ -260,8 +258,10 @@ public class AddNotesActivity extends AppCompatActivity {
 
     private void setAlarm() {
         alarmManager =(AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent =new Intent(AddNotesActivity.this,AlarmReceiver.class);
-        pendingIntent= pendingIntent.getBroadcast(this,0,intent,0);
+        Intent intent1 =new Intent(AddNotesActivity.this,AlarmReceiver.class);
+        intent1.putExtra("notitext",title.getText().toString());
+
+        PendingIntent pendingIntent= PendingIntent.getBroadcast(this,0,intent1,0);
 
         Calendar calendar2 = Calendar.getInstance();
         calendar2.set(0, 0, 0, hour1, minite2);
@@ -272,7 +272,7 @@ public class AddNotesActivity extends AppCompatActivity {
         int e= (int) calendar2.getTimeInMillis();
         int d = (int) calendar3.getTimeInMillis();
 
-        int f =e+d;
+
 
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar3.getTimeInMillis(),AlarmManager
@@ -281,7 +281,7 @@ public class AddNotesActivity extends AppCompatActivity {
         Toast.makeText(this,"Alarm Set",Toast.LENGTH_SHORT).show();
 
         
-       intent.putExtra("notitext",title.getText().toString());
+
 
 
     }

@@ -16,11 +16,16 @@ public class AlarmReceiver extends BroadcastReceiver {
         intent.setFlags(Intent. FLAG_ACTIVITY_NEW_TASK | Intent. FLAG_ACTIVITY_CLEAR_TASK ) ;
         PendingIntent pendingIntent = PendingIntent. getActivity ( context, 0 , i , 0 ) ;
 
+
+
         String titi = intent.getStringExtra("notitext");
+
+
+
 
         NotificationCompat.Builder builder= new NotificationCompat.Builder(context,"foxandroid")
                 .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
-                .setContentTitle("Meeting Reminder")
+                .setContentTitle( intent.getStringExtra("notitext"))
                 .setContentText("You have Meeting Now")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
