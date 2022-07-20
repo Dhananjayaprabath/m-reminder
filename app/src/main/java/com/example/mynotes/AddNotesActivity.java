@@ -291,7 +291,7 @@ public class AddNotesActivity extends AppCompatActivity {
            CharSequence name ="foxandroidReminderChannel";
             String description="channel for Alam manneger";
             int importance = NotificationManager.IMPORTANCE_HIGH;
-           NotificationChannel channel =new NotificationChannel("foxandroid",name,importance);
+           NotificationChannel channel =new NotificationChannel("Meeting Reminder",name,importance);
             channel.setDescription(description);
 
             NotificationManager notificationManager =getSystemService(NotificationManager.class);

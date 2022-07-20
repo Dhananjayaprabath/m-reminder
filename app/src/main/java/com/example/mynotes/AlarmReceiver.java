@@ -23,7 +23,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
 
-        NotificationCompat.Builder builder= new NotificationCompat.Builder(context,"foxandroid")
+        NotificationCompat.Builder builder= new NotificationCompat.Builder(context,"Meeting Reminder")
                 .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
                 .setContentTitle( intent.getStringExtra("notitext"))
                 .setContentText("You have Meeting Now")
