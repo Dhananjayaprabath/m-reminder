@@ -152,8 +152,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
                 intent.putExtra("date",notesList.get(position).getDate());
                 intent.putExtra("day",notesList.get(position).getDay());
                 intent.putExtra("colours",notesList.get(position).getColours());
-
                 intent.putExtra("id", notesList.get(position).getId());
+                intent.putExtra("noti",notesList.get(position).getNoti());
+
 
 
                 activity.startActivity(intent);

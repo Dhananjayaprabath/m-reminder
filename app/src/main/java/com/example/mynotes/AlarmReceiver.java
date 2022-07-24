@@ -8,6 +8,9 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
@@ -19,23 +22,27 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
         String titi = intent.getStringExtra("notitext");
+        String day =intent.getStringExtra("notidate");
+        String notiids=intent.getStringExtra("notiid");
+        int notifiid =Integer.parseInt(notiids);
 
 
 
 
         NotificationCompat.Builder builder= new NotificationCompat.Builder(context,"Meeting Reminder")
                 .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
-                .setContentTitle( intent.getStringExtra("notitext"))
-                .setContentText("You have Meeting Now")
+                .setContentTitle(titi)
+                .setContentText("You have meeting at "+day)
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(pendingIntent);
 
-        int id =1542;
+
+
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
-        notificationManagerCompat.notify(id,builder.build());
+        notificationManagerCompat.notify(notifiid,builder.build());
 
 
 

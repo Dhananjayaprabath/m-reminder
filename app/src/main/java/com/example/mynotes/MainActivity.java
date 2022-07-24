@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             while (cursor.moveToNext()) {
-                notesList.add(new Model(cursor.getString(0), cursor.getString(1), cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6)));
+                notesList.add(new Model(cursor.getString(0), cursor.getString(1), cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7)));
             }
             imageView.setVisibility(View.GONE);
         }

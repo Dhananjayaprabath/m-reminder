@@ -9,8 +9,11 @@ public class Model {
         String date;
         String day;
         String colours;
+        String noti;
 
-    public Model(String id, String title, String description, String time, String date, String day, String colours) {
+
+
+    public Model(String id, String title, String description, String time, String date, String day, String colours, String noti) {
 
         this.id=id;
         this.title = title;
@@ -19,6 +22,8 @@ public class Model {
         this.date = date;
         this.day=day;
         this.colours=colours;
+        this.noti = noti;
+
 
     }
 
@@ -81,5 +86,14 @@ public class Model {
     public void setColours(String colours) {
         this.colours = colours;
     }
+
+    public String getNoti() {
+        return noti;
+    }
+
+    public void setNoti(String noti) {
+        this.noti = noti;
+    }
+
 
 }

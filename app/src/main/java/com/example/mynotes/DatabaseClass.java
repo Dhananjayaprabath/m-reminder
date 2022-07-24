@@ -13,7 +13,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
 
     Context context;
     private static final String DatabaseName = "MyNotes";
-    private static final int DatabaseVersion = 2;
+    private static final int DatabaseVersion = 3;
 
     private static final String TableName = "mynotes";
     private static final String ColumnId = "id";
@@ -23,6 +23,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
     private static final String ColumnDate="Date";
     private static final String ColumnDay="day";
     private static final String ColumnColours="colours";
+    private static final String ColumnNoti="noti";
 
 
     public DatabaseClass(@Nullable Context context) {
@@ -40,7 +41,8 @@ public class DatabaseClass extends SQLiteOpenHelper {
                 ColumnTime + " TEXT, "+
                 ColumnDate + " TEXT, "+
                 ColumnDay + " TEXT, "+
-                ColumnColours + " TEXT);";
+                ColumnColours + " TEXT, "+
+                ColumnNoti + " TEXT);";
 
         db.execSQL(query);
 
@@ -52,7 +54,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addNotes(String title, String description,String time,String date,String day,String colours) {
+    void addNotes(String title, String description,String time,String date,String day,String colours,String noti) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -62,6 +64,8 @@ public class DatabaseClass extends SQLiteOpenHelper {
         cv.put(ColumnDate,date);
         cv.put(ColumnDay,day);
         cv.put(ColumnColours,colours);
+        cv.put(ColumnNoti,noti);
+
 
         long resultValue = db.insert(TableName, null, cv);
 
@@ -90,7 +94,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
         database.execSQL(query);
     }
 
-    void updateNotes(String title, String description,String time,String date,String id,String day,String colours) {
+    void updateNotes(String title, String description,String time,String date,String id,String day,String colours,String noti) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -100,6 +104,8 @@ public class DatabaseClass extends SQLiteOpenHelper {
         cv.put(ColumnDate,date);
         cv.put(ColumnDay,day);
         cv.put(ColumnColours,colours);
+        cv.put(ColumnNoti,noti);
+
 
         long result = database.update(TableName, cv, "id=?", new String[]{id});
         if (result == -1) {

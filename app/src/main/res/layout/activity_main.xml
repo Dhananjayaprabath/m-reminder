@@ -30,19 +30,23 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/recycler_view"
         android:layout_alignRight="@id/recycler_view"
-        android:layout_margin="16dp"
+        android:layout_alignBottom="@id/recycler_view"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/main_c"
         android:elevation="8dp"
-        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_add_24"
-        />
+        app:fabSize="normal" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_below="@id/tool"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/tool"
+        android:background="#FFFFFF" />
 
     <ImageView
         android:id="@+id/bkimage"

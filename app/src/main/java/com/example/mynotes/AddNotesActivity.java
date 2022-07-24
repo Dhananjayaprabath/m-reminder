@@ -48,7 +48,7 @@ import java.util.Scanner;
 
 import cn.iwgang.countdownview.CountdownView;
 
-public class AddNotesActivity extends AppCompatActivity {
+public class AddNotesActivity extends  AppCompatActivity  {
 
     EditText title, description,time,date,days,colours;
     Button addNote;
@@ -87,6 +87,10 @@ public class AddNotesActivity extends AppCompatActivity {
             }
 
         });
+
+
+
+
 
 
         title = findViewById(R.id.title);
@@ -170,6 +174,7 @@ public class AddNotesActivity extends AppCompatActivity {
         });
 
 
+
         addNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,7 +183,7 @@ public class AddNotesActivity extends AppCompatActivity {
                 if (Patterns.WEB_URL.matcher(description.getText().toString()).matches()){
                     if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString()) && !TextUtils.isEmpty(time.getText().toString()) && !TextUtils.isEmpty(date.getText().toString())) {
                         DatabaseClass db = new DatabaseClass(AddNotesActivity.this);
-                        db.addNotes(title.getText().toString(), description.getText().toString(), time.getText().toString(), date.getText().toString(), days.getText().toString(), colours.getText().toString());
+                        db.addNotes(title.getText().toString(), description.getText().toString(), time.getText().toString(), date.getText().toString(), days.getText().toString(), colours.getText().toString(),noti);
 
 
 
@@ -223,10 +228,10 @@ public class AddNotesActivity extends AppCompatActivity {
                 if (Patterns.WEB_URL.matcher(description.getText().toString()).matches()){
                     if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString()) && !TextUtils.isEmpty(time.getText().toString()) && !TextUtils.isEmpty(date.getText().toString())) {
                         DatabaseClass db = new DatabaseClass(AddNotesActivity.this);
-                        db.addNotes(title.getText().toString(), description.getText().toString(), time.getText().toString(), date.getText().toString(), days.getText().toString(), colours.getText().toString());
+                        db.addNotes(title.getText().toString(), description.getText().toString(), time.getText().toString(), date.getText().toString(), days.getText().toString(), colours.getText().toString(),noti);
 
 
-
+                        setAlarm();
                         Intent intent = new Intent(AddNotesActivity.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
@@ -256,12 +261,18 @@ public class AddNotesActivity extends AppCompatActivity {
         });
     }
 
+    Long tsLong = System.currentTimeMillis()/10000;
+    String noti = tsLong.toString();
+
     private void setAlarm() {
         alarmManager =(AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent1 =new Intent(AddNotesActivity.this,AlarmReceiver.class);
+        Intent intent1 =new Intent(getApplicationContext(),AlarmReceiver.class);
         intent1.putExtra("notitext",title.getText().toString());
+        intent1.putExtra("notidate", time.getText().toString());
+        intent1.putExtra("notiid",noti.toString());
 
-        PendingIntent pendingIntent= PendingIntent.getBroadcast(this,0,intent1,0);
+
+        PendingIntent pendingIntent= PendingIntent.getBroadcast(getApplicationContext(),0,intent1,PendingIntent.FLAG_ONE_SHOT);
 
         Calendar calendar2 = Calendar.getInstance();
         calendar2.set(0, 0, 0, hour1, minite2);
@@ -269,16 +280,13 @@ public class AddNotesActivity extends AppCompatActivity {
         Calendar calendar3 =Calendar.getInstance();
         calendar3.set(year1,month1,day1,hour1,minite2);
 
-        int e= (int) calendar2.getTimeInMillis();
-        int d = (int) calendar3.getTimeInMillis();
 
 
 
-
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar3.getTimeInMillis(),AlarmManager
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar3.getTimeInMillis()-1000*60*5,AlarmManager
                 .INTERVAL_DAY,pendingIntent);
 
-        Toast.makeText(this,"Alarm Set",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Set Reminder",Toast.LENGTH_SHORT).show();
 
         
 

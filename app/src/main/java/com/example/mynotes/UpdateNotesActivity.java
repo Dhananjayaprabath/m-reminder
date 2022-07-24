@@ -2,12 +2,17 @@ package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.TextUtils;
@@ -28,10 +33,13 @@ public class UpdateNotesActivity extends AppCompatActivity {
 
     EditText title,description,time,date,days,colours;
     Button updateNotes;
-    String id;
+    String id, noti;
     DatePickerDialog.OnDateSetListener setListener;
     int hour1,minite2;
     ImageButton buttond;
+    int year1,month1,day1;
+    private AlarmManager alarmManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +94,9 @@ public class UpdateNotesActivity extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                                 calendar.set(year, month, dayOfMonth);
+                                year1 =year;
+                                month1 =month;
+                                day1 =dayOfMonth;
 
                                 date.setText(DateFormat.format(" yyyy-MM-dd ", calendar));
                                 days.setText(DateFormat.format(" EEE\ndd ", calendar));
@@ -134,6 +145,7 @@ public class UpdateNotesActivity extends AppCompatActivity {
         days.setText(i.getStringExtra("day"));
         colours.setText(i.getStringExtra("colours"));
         id=i.getStringExtra("id");
+        noti=i.getStringExtra("noti");
 
         updateNotes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,8 +157,9 @@ public class UpdateNotesActivity extends AppCompatActivity {
                     if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString())) {
 
                         DatabaseClass db = new DatabaseClass(UpdateNotesActivity.this);
-                        db.updateNotes(title.getText().toString(), description.getText().toString(), time.getText().toString(), date.getText().toString(), id, days.getText().toString(), colours.getText().toString());
+                        db.updateNotes(title.getText().toString(), description.getText().toString(), time.getText().toString(), date.getText().toString(), id, days.getText().toString(), colours.getText().toString(),noti);
 
+                        setAlarm();
                         Intent i = new Intent(UpdateNotesActivity.this, MainActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
@@ -174,8 +187,9 @@ buttond.setOnClickListener(new View.OnClickListener() {
             if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString())) {
 
                 DatabaseClass db = new DatabaseClass(UpdateNotesActivity.this);
-                db.updateNotes(title.getText().toString(), description.getText().toString(), time.getText().toString(), date.getText().toString(), id, days.getText().toString(), colours.getText().toString());
+                db.updateNotes(title.getText().toString(), description.getText().toString(), time.getText().toString(), date.getText().toString(), id, days.getText().toString(), colours.getText().toString(),noti);
 
+                setAlarm();
                 Intent i = new Intent(UpdateNotesActivity.this, MainActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
@@ -196,4 +210,38 @@ buttond.setOnClickListener(new View.OnClickListener() {
 });
 
     }
+    private void setAlarm() {
+        alarmManager =(AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent1 =new Intent(getApplicationContext(),AlarmReceiver.class);
+        intent1.putExtra("notitext",title.getText().toString());
+        intent1.putExtra("notidate", time.getText().toString());
+        intent1.putExtra("notiid",noti.toString());
+
+
+        PendingIntent pendingIntent= PendingIntent.getBroadcast(getApplicationContext(),0,intent1,PendingIntent.FLAG_ONE_SHOT);
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.set(0, 0, 0, hour1, minite2);
+
+        Calendar calendar3 =Calendar.getInstance();
+        calendar3.set(year1,month1,day1,hour1,minite2);
+
+
+
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar3.getTimeInMillis()-1000*60*5,AlarmManager
+                .INTERVAL_DAY,pendingIntent);
+
+        Toast.makeText(this,"Update Remind",Toast.LENGTH_SHORT).show();
+
+
+
+
+
+    }
+
+
+
+
 }
+
