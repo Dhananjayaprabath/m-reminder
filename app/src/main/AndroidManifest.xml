@@ -3,12 +3,13 @@
     package="com.example.mynotes">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
 
 
@@ -23,13 +24,15 @@
 
         <activity android:name=".MainActivity">
 
+
         </activity>
 
 
 
-        <receiver android:name=".AppWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        <receiver android:name=".AppWidget" android:exported="true">
+            <intent-filter  >
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"  />
+
             </intent-filter>
 
             <meta-data
@@ -39,7 +42,8 @@
 
         <activity android:name=".UpdateNotesActivity" />
         <activity android:name=".AddNotesActivity" />
-        <activity android:name=".Splash">
+        <activity android:name=".Splash"
+            android:exported="true"  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,8 +53,11 @@
 
         <receiver android:name=".AlarmReceiver"
             android:enabled="true"
-            />
+            android:exported="true" />
 
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
 
     </application>
 

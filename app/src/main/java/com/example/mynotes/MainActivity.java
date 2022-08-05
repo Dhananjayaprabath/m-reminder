@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     Context context;
     ImageView imageView;
     AlertDialog.Builder builder;
+    private AlarmManager alarmManager;
 
 
     @Override
@@ -162,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
                             Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                             vibe.vibrate(100);
                             deleteAllNotes();
+                            cancelAlarm();
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -182,6 +186,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void cancelAlarm(){
+        Intent intent1 =new Intent(getApplicationContext(),AlarmReceiver.class);
+        PendingIntent pendingIntent= PendingIntent.getBroadcast(getApplicationContext(),0,intent1,PendingIntent.FLAG_ONE_SHOT);
+
+        if (alarmManager ==null);{
+            alarmManager =(AlarmManager)getSystemService(context.ALARM_SERVICE);
+        }
+        alarmManager.cancel(pendingIntent);
+        Toast.makeText(this,"All Reminders Deleted",Toast.LENGTH_SHORT).show();
     }
 
     private void deleteAllNotes() {

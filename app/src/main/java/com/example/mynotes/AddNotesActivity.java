@@ -35,6 +35,12 @@ import android.widget.RadioGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.io.IOException;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
@@ -58,12 +64,24 @@ public class AddNotesActivity extends  AppCompatActivity  {
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
 
-    
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_notes);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
 
         createNotificationChannel();
 
@@ -169,6 +187,9 @@ public class AddNotesActivity extends  AppCompatActivity  {
 
                 timePickerDialog.show();
                 timePickerDialog.updateTime(hour1, minite2);
+                final Calendar c = Calendar.getInstance();
+               
+
 
             }
         });
