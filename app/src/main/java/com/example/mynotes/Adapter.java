@@ -76,7 +76,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
             @Override
             public void onClick(View v) {
 
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(v.getRootView().getContext());
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(v.getRootView().getContext(),R.style.CustomBottomSheetDialog);
                 bottomSheetDialog.setContentView(R.layout.buttom_sheet);
                 bottomSheetDialog.show();
 
