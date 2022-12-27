@@ -284,6 +284,7 @@ public class AddNotesActivity extends  AppCompatActivity  {
 
     Long tsLong = System.currentTimeMillis()/10000;
     String noti = tsLong.toString();
+    int notifiid =Integer.parseInt(noti);
 
     private void setAlarm() {
         alarmManager =(AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -293,7 +294,8 @@ public class AddNotesActivity extends  AppCompatActivity  {
         intent1.putExtra("notiid",noti.toString());
 
 
-        PendingIntent pendingIntent= PendingIntent.getBroadcast(getApplicationContext(),0,intent1,PendingIntent.FLAG_ONE_SHOT);
+
+        PendingIntent pendingIntent= PendingIntent.getBroadcast(getApplicationContext(),notifiid,intent1,PendingIntent.FLAG_ONE_SHOT);
 
         Calendar calendar2 = Calendar.getInstance();
         calendar2.set(0, 0, 0, hour1, minite2);

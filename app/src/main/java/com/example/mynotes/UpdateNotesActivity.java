@@ -216,9 +216,9 @@ buttond.setOnClickListener(new View.OnClickListener() {
         intent1.putExtra("notitext",title.getText().toString());
         intent1.putExtra("notidate", time.getText().toString());
         intent1.putExtra("notiid",noti.toString());
+        int notifiid =Integer.parseInt(noti);
 
-
-        PendingIntent pendingIntent= PendingIntent.getBroadcast(getApplicationContext(),0,intent1,PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent= PendingIntent.getBroadcast(getApplicationContext(),notifiid,intent1,PendingIntent.FLAG_ONE_SHOT);
 
         Calendar calendar2 = Calendar.getInstance();
         calendar2.set(0, 0, 0, hour1, minite2);
